@@ -1,3 +1,8 @@
+app = FastAPI(
+    title="Hospital Patient Navigation System API",
+    version="2.0.0",
+    lifespan=lifespan
+)
 from contextlib import asynccontextmanager
 from datetime import datetime, time
 from fastapi import Depends, FastAPI, HTTPException
@@ -90,7 +95,7 @@ async def lifespan(app: FastAPI):
     yield
 
 app=FastAPI(title="Hospital Patient Navigation System API",version="2.0.0",lifespan=lifespan)
-app.add_middleware(CORSMiddleware,allow_origins=["http://localhost:5173","http://127.0.0.1:5173"],allow_credentials=True,allow_methods=["*"],allow_headers=["*"])
+app.add_middleware(CORSMiddleware,allow_origins=["http://localhost:5173","http://127.0.0.1:5173","hospital-navigation-system-5zai.vercel.app"],allow_credentials=True,allow_methods=["*"],allow_headers=["*"])
 
 def location_json(loc):
     return {"id":loc.id,"name":loc.name,"floor":loc.floor,"x":loc.x,"y":loc.y,"kind":loc.kind,"qr_code":loc.qr_code}
